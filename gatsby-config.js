@@ -1,43 +1,58 @@
+require('dotenv').config({
+  path: `.env`,
+});
+
 module.exports = {
   siteMetadata: {
-    name: "Comments App",
-    description: "Roll your own comments with Gatsby and FaunaDB",
-    keywords: [
-      "React",
-      "Gatsby",
-      "FaunaDB",
-      "Netlify Continuous Deployment",
-      "Netlify Identity Widget",
-      "Netlify Serverless functions",
-      "Apollo",
-      "GraphQL",
-    ],
-    siteUrl: "https://fauna-gatsby-comments.netlify.com",
-    siteImage: "images/comments-app-open-graph-image.jpg",
-    profileImage: ``,
-    lang: `en`,
+    title: `AntiSaladClub`,
+    description: `stuff`,
+    author: `Josh`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
+    `gatsby-optional-chaining`,
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `open sans\:400`,
+          'open sans:400i',
+          `open sans\:700`,
+          'open sans:700i',
+          `open sans\:800`,
+          'open sans:800i',
+        ],
+      },
+    },
+    {
+      resolve: 'gatsby-source-shopify',
+      options: {
+        shopName: process.env.GATSBY_SHOP_NAME,
+        accessToken: process.env.GATSBY_ACCESS_TOKEN,
+        apiVersion: '2020-07',
+      },
+    },
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `posts`,
-        path: `${__dirname}/src/posts/`,
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-layout`,
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        component: require.resolve(`./src/layouts/PagesLayout.js`),
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/gatsby-icon.png`,
       },
     },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.mdx`, `.md`],
-      },
-    },
-    `gatsby-plugin-theme-ui`,
-    `gatsby-plugin-react-helmet`,
   ],
 };

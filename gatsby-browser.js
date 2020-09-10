@@ -1,14 +1,17 @@
-const React = require("react");
-const { client } = require("./src/client");
+import React from 'react';
+import { ProductContextProvider } from './src/context/ProductContext';
+import { CartContextProvider } from './src/context/CartContext';
+import { GlobalStyle } from './src/components/globalStyles';
 
-const { AppContextProvider } = require("./src/components/AppContext");
-const { Identity } = require("./src/components/Identity");
-const { ApolloProvider } = require("@apollo/react-hooks");
+export const wrapRootElement = ({ element }) => (
+  <ProductContextProvider>
+    <CartContextProvider>{element}</CartContextProvider>
+  </ProductContextProvider>
+);
 
-exports.wrapRootElement = ({ element }) => (
-  <AppContextProvider>
-    <Identity>
-      <ApolloProvider client={client}>{element}</ApolloProvider>
-    </Identity>
-  </AppContextProvider>
+export const wrapPageElement = ({ element }) => (
+  <>
+    <GlobalStyle />
+    {element}
+  </>
 );
