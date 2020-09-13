@@ -26,7 +26,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   data.allShopifyProduct.edges.forEach(({ node }) => {
     createPage({
-      path: `products/${node.handle}`,
+      path: `product/${node.handle}`,
       context: {
         shopifyId: node.shopifyId,
       },
