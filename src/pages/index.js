@@ -6,13 +6,13 @@ import {
 import { graphql, StaticQuery } from "gatsby";
 import Image from "gatsby-image";
 import styled from 'styled-components';
+import CartContext from 'context/CartContext';
 
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 1rem;
 `;
-
 
 const GET_ALL_PRODUCTS = graphql`
   query ProductsListingQuery {
@@ -47,6 +47,10 @@ const GET_ALL_PRODUCTS = graphql`
 `
 
 const IndexPage = () => {
+  const { updateLineItem } = React.useContext(CartContext);
+  const handleSubmit = (variantId) => {
+    updateLineItem({ variantId, quantity: parseInt(10) });
+  };
 
   return (
     <Layout>
@@ -58,12 +62,14 @@ const IndexPage = () => {
             <Grid>
               {products.edges.map(({ node: product }) => {
                 return (
-                  <a href={`/product/${product.handle}`}>
-                    <Image fluid={product.images[0].localFile.childImageSharp.fluid} />
-                    <p>{product.title}</p>
-                  </a>
+                  <div>
+                    <a href={`/product/${product.handle}`}>
+                      <Image fluid={product.images[0].localFile.childImageSharp.fluid} />
+                      <p>{product.title}</p>
+                    </a>
+                    <button onClick={() => handleSubmit(product.variants[0].shopifyId)}>Add to cart</button>
+                  </div>
                 )
-
               })}
             </Grid>
           )

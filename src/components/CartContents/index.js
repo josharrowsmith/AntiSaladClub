@@ -9,9 +9,21 @@ export function CartContents() {
     updateLineItem({ quantity, variantId });
   };
 
+  console.log(checkout.lineItems)
+
   return (
     <section>
-      <h1>The Cart</h1>
+       {checkout?.lineItems?.map(item => (
+        <div key={item.variant.id}>
+          <div>
+            <div>{item.title}</div>
+            <div>
+              {item.variant.title === 'Default Title' ? '' : item.variant.title}
+            </div>
+          </div>
+          <div>£{item.variant.price}</div>
+        </div>
+      ))}
     </section>
   );
 }
