@@ -5,6 +5,14 @@ import {
 } from 'components';
 import { graphql, StaticQuery } from "gatsby";
 import Image from "gatsby-image";
+import styled from 'styled-components';
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1rem;
+`;
+
 
 const GET_ALL_PRODUCTS = graphql`
   query ProductsListingQuery {
@@ -47,17 +55,17 @@ const IndexPage = () => {
         query={GET_ALL_PRODUCTS}
         render={({ products }) => {
           return (
-            <>
+            <Grid>
               {products.edges.map(({ node: product }) => {
                 return (
                   <a href={`/product/${product.handle}`}>
                     <Image fluid={product.images[0].localFile.childImageSharp.fluid} />
-                    <h1>{product.title}</h1>
+                    <p>{product.title}</p>
                   </a>
                 )
 
               })}
-            </>
+            </Grid>
           )
         }}
       />

@@ -6,7 +6,16 @@ import {
   SEO,
 } from 'components';
 
-export default function ProductTemplate(props) {
+// callback to fragment
+export const query = graphql`
+  query ProductQuery($shopifyId: String) {
+    shopifyProduct(shopifyId: { eq: $shopifyId }) {
+      ...ShopifyProductFields
+    }
+  }
+`;
+
+export default function ProductCategoriesTemplate(props) {
   return (
     <Layout>
       <SEO
