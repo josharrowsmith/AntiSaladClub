@@ -5,6 +5,7 @@ export const productFields = graphql`
     shopifyId
     title
     description
+    handle
     images {
       id
       localFile {

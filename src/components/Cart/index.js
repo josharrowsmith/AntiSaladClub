@@ -5,12 +5,17 @@ import { FaShoppingCart } from 'react-icons/fa';
 
 export function Cart() {
   const { checkout } = React.useContext(CartContext);
-  console.log(checkout)
+  let totalQuantity = 0;
+  if (checkout) {
+    checkout.lineItems.forEach(lineItem => {
+      totalQuantity = totalQuantity + lineItem.quantity;
+    });
+  }
   return (
     <CartWrapper>
       <FaShoppingCart size="1.5em" />
       <div>
-        {0} item(s) / {'0.00'}
+        {totalQuantity} item(s) / ${checkout?.totalPrice || '0.00'}
       </div>
     </CartWrapper>
   );

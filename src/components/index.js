@@ -4,3 +4,6 @@ export * from './Layout';
 export * from './Nav';
 export * from './Cart';
 export * from './CartContents';
+export * from './RemoveLineItem';
+export * from './Button';
+export * from './QuantityAdjuster';

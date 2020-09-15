@@ -30,7 +30,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         shopifyId: node.shopifyId,
       },
-      component: path.resolve('./src/templates/ProductTemplate/index.js'),
+      component: path.resolve('./src/templates/product.js'),
     });
   });
 
@@ -42,6 +42,7 @@ exports.createPages = async ({ graphql, actions }) => {
             id
             title
             handle
+            shopifyId
           }
         }
       }
@@ -49,13 +50,13 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   collections.data.allShopifyCollection.edges.forEach(
-    ({ node: { id, handle } }) => {
+    ({ node: { shopifyId, handle } }) => {
       createPage({
         path: `/${handle}`,
-        component: path.resolve("./src/templates/ProductCategoriesTemplate/index.js"),
+        component: path.resolve("./src/templates/category.js"),
         context: {
-          id,
-          handle,
+          shopifyId,
+          handle
         },
       })
     }

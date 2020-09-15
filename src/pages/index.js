@@ -55,7 +55,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO description="SEO stuff" title="Homepage" />
-      <StaticQuery
+      {/* <StaticQuery
         query={GET_ALL_PRODUCTS}
         render={({ products }) => {
           return (
@@ -74,7 +74,7 @@ const IndexPage = () => {
             </Grid>
           )
         }}
-      />
+      /> */}
     </Layout>
   );
 };

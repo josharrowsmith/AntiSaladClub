@@ -8,7 +8,6 @@ export function Nav() {
   return (
     <nav>
       {collections.map(edge => {
-        console.log(edge)
         return (
           <Link
             key={edge.title}
