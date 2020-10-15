@@ -7,3 +7,7 @@ export * from './CartContents';
 export * from './RemoveLineItem';
 export * from './Button';
 export * from './QuantityAdjuster';
+export * from './Filters';
+export * from './ProductsGrid';
+export * from './ProductTile';
+export * from './Checkbox';

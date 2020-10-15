@@ -11,7 +11,6 @@ export function Header() {
       <Link to="/">
         <h1>logo</h1>
       </Link>
-      <Nav />
       <Cart />
     </HeaderWrapper>
   );
