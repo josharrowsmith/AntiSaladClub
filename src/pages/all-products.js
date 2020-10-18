@@ -55,7 +55,7 @@ export default function AllProducts() {
   return (
     <Layout>
       <SEO
-        description="The MadHatter store all products"
+        description="stuff"
         title="All products"
       />
       <Content>

@@ -2,17 +2,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import {
-  Layout,
-  SEO,
+    Layout,
+    SEO,
 } from 'components';
+import { Grid, SelectWrapper, Price } from './styles';
+import CartContext from 'context/CartContext';
 
 export default function ProductTemplate(props) {
-  return (
-    <Layout>
-      <SEO
-        description={props.data.shopifyProduct.description}
-        title={props.data.shopifyProduct.title}
-      />
-    </Layout>
-  )
+    return (
+        <Layout></Layout>
+    )
 }

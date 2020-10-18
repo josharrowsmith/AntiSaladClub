@@ -11,3 +11,5 @@ export * from './Filters';
 export * from './ProductsGrid';
 export * from './ProductTile';
 export * from './Checkbox';
+export * from './ImageGallery';
+export * from './AddCart';
